@@ -25,6 +25,9 @@
     <ClCompile Include="server_discover.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="robo_server.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="robopi.server-Debug.vgdbsettings">
@@ -36,6 +39,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="server_discover.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="robo_server.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

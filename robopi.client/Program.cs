@@ -43,7 +43,12 @@ namespace robopi.client
             if(endPoint == null)
                 return;
 
-            using var tcpClient = new TcpClient("raspberrypi", 5050);
+            Console.WriteLine("Try connect to {0}...", endPoint);
+
+            using var tcpClient = new TcpClient(AddressFamily.InterNetwork);
+            
+            tcpClient.Connect(endPoint.Address, endPoint.Port);
+
             using var networkStream = tcpClient.GetStream();
             var buffer = new byte[4096];
 

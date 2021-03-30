@@ -14,7 +14,7 @@ namespace robopi
 
 		enum commands : std::uint8_t
 		{
-			auth = 0xFF
+			auth = 0xAC
 		};
 		
 		static const std::size_t max_length = 1024;

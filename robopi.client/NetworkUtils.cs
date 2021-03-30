@@ -20,14 +20,14 @@ namespace robopi.client
         public static async Task<IReadOnlyList<IPEndPoint>> FindServers()
         {
             var ep = new IPEndPoint(IPAddress.Broadcast, DiscoverPort);
-            var sendBuffer = new byte[] { 0xFF };
+            var sendBuffer = new byte[] { 0xAC };
             using var udp = new UdpClient();
 
             HashSet<IPEndPoint> endPoints = new();
 
             await udp.SendAsync(sendBuffer, 1, ep);
 
-            await Task.Delay(TimeSpan.FromMilliseconds(100));
+            await Task.Delay(TimeSpan.FromMilliseconds(500));
 
             while (udp.Available > 0)
             {
@@ -36,7 +36,7 @@ namespace robopi.client
                 
                 endPoints.Add(new IPEndPoint(receive.RemoteEndPoint.Address, port));
 
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
+                await Task.Delay(TimeSpan.FromMilliseconds(500));
             }
 
             return endPoints.ToArray();

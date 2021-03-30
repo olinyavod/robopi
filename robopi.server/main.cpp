@@ -3,6 +3,7 @@
 #include <asio.hpp>
 
 #include "server_discover.hpp"
+#include "robo_server.hpp"
 
 const std::uint16_t DISCOVER_PORT = 30000;
 
@@ -27,8 +28,12 @@ int main(int argc, char *argv[])
 		asio::io_context io_context;
 
 		robopi::server_discover discover(io_context, DISCOVER_PORT, get_server_info);
+		robopi::robo_server server(io_context, server_port);
+
+		server_port = server.local_endpoint().port();
 		
 		discover.run();
+		server.run();
 
 		std::cout << "Start listen on " << server_port << " port.\n";
 		io_context.run();
